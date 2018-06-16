@@ -1,0 +1,14 @@
+<h1>施設詳細</h1>
+
+<p>施設ID <%= @facility.facility_number %></p>
+<p>施設名 <%= @facility.name %></p>
+<p>地区 <%= @facility.district %></p>
+<p>住所 <%= @facility.address %></p>
+<p>施設分類 <%= @facility.facility_type %></p>
+<p>延床面積 <%= @facility.floor_area %></p>
+<p>担当課 <%= @facility.division_in_charge %></p>
+<p>最終更新者 <%= @facility.last_updated_user_id %></p>
+
+<%= link_to '施設一覧', facilities_path %>
+<%= link_to '編集', edit_facility_path(@facility) %>
+<%= link_to '削除', @facility, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>

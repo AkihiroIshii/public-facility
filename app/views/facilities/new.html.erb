@@ -1,0 +1,24 @@
+<h1>施設作成</h1>
+
+<%= form_for(@facility) do |f| %>
+  <%= f.label :facility_number, '施設ID' %>
+  <%= f.text_field :facility_number %><br>
+  <%= f.label :name, '施設名' %>
+  <%= f.text_field :name %><br>
+  <%= f.label :district, '地区' %>
+  <%= f.text_field :district %><br>
+  <%= f.label :address, '住所' %>
+  <%= f.text_field :address %><br>
+  <%= f.label :facility_type, '施設分類' %>
+  <%= f.text_field :facility_type %><br>
+  <%= f.label :floor_area, '延床面積' %>
+  <%= f.text_field :floor_area %>㎡<br>
+  <%= f.label :division_in_charge, '担当課' %>
+  <%= f.text_field :division_in_charge %><br>
+  <%= f.label :last_updated_user_id, '最終更新者（入力不要にする予定）' %>
+  <%= f.text_field :last_updated_user_id %><br>
+  
+  <%= f.submit '作成' %>
+<% end %>
+
+<%= link_to '施設一覧', facilities_path %>

@@ -1,0 +1,9 @@
+<h1>施設一覧</h1>
+
+<%= link_to '新規施設', new_facility_path %>
+
+<ul>
+  <% @facilities.each do |facility| %>
+    <li><%= link_to facility.facility_number, facility %>   <%= facility.name %></li>
+  <% end %>
+</ul>
