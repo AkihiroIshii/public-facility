@@ -13,16 +13,19 @@
 ActiveRecord::Schema.define(version: 20180616022744) do
 
   create_table "buildings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "building_number"
     t.string   "name"
     t.decimal  "construction_year",               precision: 4
     t.float    "floor_area",           limit: 24
     t.integer  "last_updated_user_id",                          null: false
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
+    t.index ["building_number"], name: "index_buildings_on_building_number", unique: true, using: :btree
     t.index ["last_updated_user_id"], name: "index_buildings_on_last_updated_user_id", using: :btree
   end
 
   create_table "facilities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "facility_number"
     t.string   "name"
     t.string   "district"
     t.string   "address"
@@ -32,6 +35,7 @@ ActiveRecord::Schema.define(version: 20180616022744) do
     t.integer  "last_updated_user_id",            null: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.index ["facility_number"], name: "index_facilities_on_facility_number", unique: true, using: :btree
     t.index ["last_updated_user_id"], name: "index_facilities_on_last_updated_user_id", using: :btree
   end
 
