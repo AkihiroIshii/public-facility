@@ -1,0 +1,18 @@
+<h1>建物作成</h1>
+
+<%= form_for(@building) do |f| %>
+  <%= f.label :building_number, '建物ID' %>
+  <%= f.text_field :building_number %><br>
+  <%= f.label :name, '建物名' %>
+  <%= f.text_field :name %><br>
+  <%= f.label :construction_year, '施行年度' %>
+  <%= f.text_field :construction_year %><br>
+  <%= f.label :floor_area, '延床面積' %>
+  <%= f.text_field :floor_area %>㎡<br>
+  <%= f.label :last_updated_user_id, '最終更新者（非表示にする予定）' %>
+  <%= f.text_field :last_updated_user_id %><br>
+  
+  <%= f.submit '作成' %>
+<% end %>
+
+<%= link_to '建物一覧', buildings_path %>
