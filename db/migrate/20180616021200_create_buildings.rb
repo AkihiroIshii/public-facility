@@ -3,6 +3,7 @@ class CreateBuildings < ActiveRecord::Migration[5.0]
     create_table :buildings do |t|
       t.string :building_number
       t.string :name
+      t.integer :facility_id
       t.decimal :construction_year, precision: 4, scale: 0
       t.float :floor_area
       t.integer :last_updated_user_id, :null => false

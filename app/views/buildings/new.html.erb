@@ -5,6 +5,13 @@
   <%= f.text_field :building_number %><br>
   <%= f.label :name, '建物名' %>
   <%= f.text_field :name %><br>
+
+  <!-- f.label :facility_id, '対象施設' %>-->
+  <!-- f.collection_select :name, Facility.all, :id, :name %><br>-->
+  対象施設
+  <!--= select_tag :facility_id, options_for_select(Facility.all) %><br>-->
+  <%= f.text_field :facility_id %><br>
+
   <%= f.label :construction_year, '施行年度' %>
   <%= f.text_field :construction_year %><br>
   <%= f.label :floor_area, '延床面積' %>

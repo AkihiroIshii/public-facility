@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20180616022744) do
   create_table "buildings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "building_number"
     t.string   "name"
+    t.integer  "facility_id"
     t.decimal  "construction_year",               precision: 4
     t.float    "floor_area",           limit: 24
     t.integer  "last_updated_user_id",                          null: false
