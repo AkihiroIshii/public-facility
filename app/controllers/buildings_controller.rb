@@ -14,17 +14,11 @@ class BuildingsController < ApplicationController
   
   def create
     @building = Building.new(building_params)
+    @building.relationships.build(facility_id: building_params[:facility_id])
 
     if @building.save
-      #relationship = @building.relationships.build(facility_id: params[:facility_id])
-      relationship = @building.relationships.build(facility_id: @building.facility_id)
-      if relationship.save
-        flash[:success] = '建物が正常に作成されました'
-        redirect_to @building
-      else
-        flash.now[:danger] = '建物が作成されませんでした'
-        render :new
-      end
+      flash[:success] = '建物が正常に作成されました'
+      redirect_to @building
     else
       flash.now[:danger] = '建物が作成されませんでした'
       render :new
