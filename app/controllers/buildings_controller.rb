@@ -31,8 +31,15 @@ class BuildingsController < ApplicationController
 
   def update
     @building = Building.find(params[:id])
+    @building.relationships.build(facility_id: building_params[:facility_id])
+    
+    previous_relationship = Relationship.find_by( \
+      facility_id: params[:previous_facility_id], \
+      building_id: params[:id] \
+    )
     
     if @building.update(building_params)
+      previous_relationship.destroy
       flash[:success] = '建物が正常に更新されました'
       redirect_to @building
     else

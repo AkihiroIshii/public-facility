@@ -13,6 +13,7 @@
   <%= f.text_field :floor_area %>㎡<br>
   <%= f.label :last_updated_user_id, '最終更新者（非表示にする予定）' %>
   <%= f.text_field :last_updated_user_id %><br>
+  <%= hidden_field_tag :previous_facility_id , @building.facility_id %>
   
   <%= f.submit '確定' %>
 <% end %>
