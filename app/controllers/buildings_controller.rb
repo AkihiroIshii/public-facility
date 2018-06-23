@@ -3,6 +3,7 @@ class BuildingsController < ApplicationController
   
   def index
     @buildings = Building.all
+    @total_floor_area = @buildings.sum(:floor_area)
   end
 
   def show

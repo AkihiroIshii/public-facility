@@ -3,6 +3,7 @@ class FacilitiesController < ApplicationController
 
   def index
     @facilities = Facility.all
+    @total_floor_area = @facilities.sum(:floor_area)
   end
   
   def show
