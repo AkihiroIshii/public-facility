@@ -7,6 +7,5 @@
 <p>延床面積 <%= @building.floor_area %>㎡</p>
 <p>最終更新者 <%= @building.last_updated_user_id %></p>
 
-<%= link_to '建物一覧', buildings_path %>
 <%= link_to '編集', edit_building_path(@building) %>
 <%= link_to '削除', @building, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>

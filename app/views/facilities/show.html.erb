@@ -9,6 +9,5 @@
 <p>担当課 <%= @facility.division_in_charge %></p>
 <p>最終更新者 <%= @facility.last_updated_user_id %></p>
 
-<%= link_to '施設一覧', facilities_path %>
 <%= link_to '編集', edit_facility_path(@facility) %>
 <%= link_to '削除', @facility, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>

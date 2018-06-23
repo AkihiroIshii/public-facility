@@ -1,0 +1,10 @@
+<% if logged_in? %>
+  <p>ログイン完了ユーザ： <%= current_user.name %></p>
+<% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>公共施設 調査票</h1>
+      <%= link_to 'ユーザ登録', signup_path, class: 'btn btn-lg btn-primary' %>
+    </div>
+  </div>
+<% end %>
