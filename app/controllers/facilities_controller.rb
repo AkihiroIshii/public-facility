@@ -7,6 +7,7 @@ class FacilitiesController < ApplicationController
   
   def show
     @facility = Facility.find(params[:id])
+    @user = User.find(@facility.last_updated_user_id)
   end
   
   def new

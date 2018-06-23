@@ -8,6 +8,7 @@ class BuildingsController < ApplicationController
   def show
     @building = Building.find(params[:id])
     @facility = Facility.find_by(id: @building.facility_id)
+    @user = User.find(@building.last_updated_user_id)
   end
   
   def new
@@ -29,19 +30,21 @@ class BuildingsController < ApplicationController
   
   def edit
     @building = Building.find(params[:id])
+    #@user = User.find(@building.last_updated_user_id)
   end
 
   def update
     @building = Building.find(params[:id])
     @building.relationships.build(facility_id: building_params[:facility_id])
-    
+  
+    # 更新前の関連インスタンスを削除
     previous_relationship = Relationship.find_by( \
       facility_id: params[:previous_facility_id], \
       building_id: params[:id] \
     )
+    previous_relationship.destroy
     
     if @building.update(building_params)
-      previous_relationship.destroy
       flash[:success] = '建物が正常に更新されました'
       redirect_to @building
     else

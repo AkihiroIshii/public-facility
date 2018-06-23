@@ -11,8 +11,7 @@
   <%= f.text_field :construction_year %><br>
   <%= f.label :floor_area, '延床面積' %>
   <%= f.text_field :floor_area %>㎡<br>
-  <%= f.label :last_updated_user_id, '最終更新者（非表示にする予定）' %>
-  <%= f.text_field :last_updated_user_id %><br>
-  
+  <%= f.hidden_field :last_updated_user_id, :value => current_user.id %>
+
   <%= f.submit '作成' %>
 <% end %>
