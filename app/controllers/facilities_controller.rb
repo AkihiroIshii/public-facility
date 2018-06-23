@@ -45,10 +45,15 @@ class FacilitiesController < ApplicationController
   
   def destroy
     @facility = Facility.find(params[:id])
-    @facility.destroy
-    
-    flash[:success] = '施設は正常に削除されました'
-    redirect_to facilities_url
+
+    if !!Relationship.find_by(facility_id: @facility)
+      flash[:danger] = '先に関連付けされている建物を削除してください。'
+      redirect_to @facility
+    else
+      @facility.destroy
+      flash[:success] = '施設は正常に削除されました。'
+      redirect_to facilities_url
+    end
   end
   
   private
