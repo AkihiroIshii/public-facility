@@ -1,6 +1,6 @@
 class BuildingsController < ApplicationController
   before_action :require_user_logged_in
-  
+
   def index
     @buildings = Building.all
     @total_floor_area = @buildings.sum(:floor_area)
@@ -11,11 +11,11 @@ class BuildingsController < ApplicationController
     @facility = Facility.find_by(id: @building.facility_id)
     @user = User.find(@building.last_updated_user_id)
   end
-  
+
   def new
     @building = Building.new
   end
-  
+
   def create
     @building = Building.new(building_params)
     @building.relationships.build(facility_id: building_params[:facility_id])
@@ -28,7 +28,7 @@ class BuildingsController < ApplicationController
       render :new
     end
   end
-  
+
   def edit
     @building = Building.find(params[:id])
     #@user = User.find(@building.last_updated_user_id)
@@ -37,14 +37,14 @@ class BuildingsController < ApplicationController
   def update
     @building = Building.find(params[:id])
     @building.relationships.build(facility_id: building_params[:facility_id])
-  
+    
     # 更新前の関連インスタンスを削除
     previous_relationship = Relationship.find_by( \
       facility_id: params[:previous_facility_id], \
       building_id: params[:id] \
     )
     previous_relationship.destroy
-    
+
     if @building.update(building_params)
       flash[:success] = '建物が正常に更新されました'
       redirect_to @building
@@ -53,17 +53,17 @@ class BuildingsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @building = Building.find(params[:id])
     @building.destroy
-    
+
     flash[:success] = '建物は正常に削除されました'
     redirect_to buildings_url
   end
-  
+
   private
-    
+
   # Strong Parameter
   def building_params
     params.require(:building).permit(:building_number, :name, :facility_id, :construction_year, :floor_area, :last_updated_user_id)

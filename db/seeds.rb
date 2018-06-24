@@ -12,8 +12,8 @@ Facility.create(facility_number:"F004", name:"市立博物館", district:"北区
 Building.create(building_number:"B001", name:"第一小学校 北校舎", facility_id:1, construction_year:1980, floor_area:1000, last_updated_user_id:1)
 Building.create(building_number:"B002", name:"第一小学校 南校舎", facility_id:1, construction_year:2000, floor_area:1000, last_updated_user_id:1)
 Building.create(building_number:"B003", name:"第一小学校 体育館", facility_id:1, construction_year:1980, floor_area:200, last_updated_user_id:1)
-Building.create(building_number:"B004", name:"北区文化会館", facility_id:1, construction_year:2010, floor_area:1200, last_updated_user_id:1)
-Building.create(building_number:"B005", name:"市立博物館", facility_id:1, construction_year:2005, floor_area:1000, last_updated_user_id:1)
+Building.create(building_number:"B004", name:"北区文化会館", facility_id:2, construction_year:2010, floor_area:1200, last_updated_user_id:1)
+Building.create(building_number:"B005", name:"市立博物館", facility_id:4, construction_year:2005, floor_area:1000, last_updated_user_id:1)
 
 # 関係
 Relationship.create(facility_id:1, building_id:1)
