@@ -1,6 +1,8 @@
 <h1>建物編集</h1>
 
 <%= form_for(@building) do |f| %>
+  <%= render 'layouts/error_messages', model: @building %>
+
   <%= f.label :building_number, '建物ID' %>
   <%= f.text_field :building_number %><br>
   <%= f.label :name, '建物名' %>
@@ -13,6 +15,6 @@
   <%= f.text_field :floor_area %>㎡<br>
   <%= f.hidden_field :last_updated_user_id, :value => current_user.id %>
   <%= hidden_field_tag :previous_facility_id , @building.facility_id %>
-  
+
   <%= f.submit '確定' %>
 <% end %>

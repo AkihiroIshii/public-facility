@@ -1,6 +1,8 @@
 <h1>施設編集</h1>
 
 <%= form_for(@facility) do |f| %>
+  <%= render 'layouts/error_messages', model: @facility %>
+
   <%= f.label :facility_number, '施設ID' %>
   <%= f.text_field :facility_number %><br>
   <%= f.label :name, '施設名' %>
