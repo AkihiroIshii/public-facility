@@ -37,18 +37,24 @@ class BuildingsController < ApplicationController
   def update
     @building = Building.find(params[:id])
     @building.relationships.build(facility_id: building_params[:facility_id])
-    
+
     # 更新前の関連インスタンスを削除
+    #（validation エラーでも削除されるため、存在している場合のみ削除）
     previous_relationship = Relationship.find_by( \
       facility_id: params[:previous_facility_id], \
       building_id: params[:id] \
     )
-    previous_relationship.destroy
+    previous_relationship.destroy if !!previous_relationship
 
     if @building.update(building_params)
       flash[:success] = '建物が正常に更新されました'
       redirect_to @building
     else
+      # 削除した関連インスタンスを再作成
+      Relationship.create( \
+        facility_id: params[:previous_facility_id], \
+        building_id: params[:id]
+      )
       flash.now[:danger] = '建物が更新されませんでした'
       render :edit
     end
